@@ -1,0 +1,36 @@
+<% if (error) { %>
+  <p style="color: #f38ba8;"><%= error %></p>
+<% } %>
+
+<% if (!user) { %>
+  <h1>Enter your login details (name is your webring name).</h1>
+  <form action="/edit" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="pass">Password:</label>
+      <input type="password" id="pass" name="pass" required>
+
+      <button type="submit">Log In</button>
+  </form>
+<% } else { %>
+  <h2>You are editing <span style="color: #a6e3a1;"><%= user.name %></span>!</h2>
+  <div style="margin-bottom: 25px;">
+  <form action="/edit-members" method="post">
+      <input type="hidden" name="name" value="<%= user.name %>">
+      <label for="memberUrls">Update Member URLs, <span style="color: #f38ba8;">separate with commas</span>:</label>
+      <br>
+      <textarea id="memberUrls" name="memberUrls" style="width: 40%; height: 100px;" required><%= (user.member || []).join(', ') %></textarea>
+      <br>
+      <button type="submit">Update Members</button>
+  </form>
+</div>
+  <form action="/edit-url" method="post">
+    <input type="hidden" name="name" value="<%= user.name %>">
+    <label for="url">Update homepage URL:</label>
+    <br>
+    <input type="url" id="url" name="url" maxlength="60" value="<%= user.url %>" required>
+    <br>
+    <button type="submit">Update URL</button>
+</form>
+<% } %>

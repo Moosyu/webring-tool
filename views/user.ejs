@@ -1,0 +1,41 @@
+<h1><%= name %></h1>
+<p>Summary: <%= desc %></p>
+<p>Homepage URL: <a href="<%= url %>"><%= url %></a></p>
+
+<h2>Member sites:</h2>
+<ul>
+  <% if (memberUrls.length > 0) { %>
+    <% memberUrls.forEach(url => { %>
+      <li><a href="<%= url %>"><%= url %></a></li>
+    <% }) %>
+  <% } else { %>
+    <p>Nobody is in this webring, how sad.</p>
+  <% } %>
+</ul>
+
+<h3>Placeholder widget! (Check this webring's homepage above for any official widget.)</h3>
+<textarea style="width: 40%; height: 100px;">
+  <div>
+    <a href="<%= pageUrl %>/directory/<%= user.id %>/prev?via=YOUR_SITE_URL">← Back</a>
+    <a href="<%= pageUrl %>/directory/<%= user.id %>/random">↑ Random</a>
+    <a href="<%= url %>"><%= name %></a>
+    <a href="<%= pageUrl %>/directory/<%= user.id %>/next?via=YOUR_SITE_URL">→ Next</a>
+  </div>
+</textarea>
+
+<p>YOUR_SITE_URL has to be the exact url, include the https:// and any slashes at the end.</p>
+
+<% if (autoAccept) { %>
+  <h3>This webring is public! Enter your URL below if you'd like to join!</h3>
+  <form action="/user-site-upload" method="post">
+    <input type="hidden" name="id" value="<%= user.id %>">
+    <input type="url" id="url" name="url" maxlength="60" required>
+    <br>
+    <button type="submit">Add URL</button>
+  </form>
+
+<% } %>
+
+<% if (!autoAccept) { %>
+  <h3>This webring is private! Contact the webring owner if you'd like to join!</h3>
+<% } %>

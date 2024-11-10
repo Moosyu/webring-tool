@@ -1,0 +1,13 @@
+<h1>Directory</h1>
+
+<% if (error) { %>
+  <p style="color: #f38ba8;"><%= error %></p>
+<% } else { %>
+  <ul>
+    <% Object.values(users).reverse().forEach(user => { %>
+      <a href="/directory/<%= user.id %>">
+        <li><%= user.name %> - <%= user.desc %></li>
+      </a>
+    <% }) %>
+  </ul>
+<% } %>

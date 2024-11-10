@@ -1,0 +1,30 @@
+<h1>Add Webring</h1>
+
+<p>Don't forget your password because even if you ask I can't get it back.</p>
+
+<p>"Homepage" should be the page where you have your webrings widget to give your members.</p>
+
+<p>You <span style="color: #f38ba8;">can't</span> edit your webring's name or password after account creation. Only members and homepage.</p>
+
+<% if (error) { %>
+  <p style="color: #f38ba8;"><%= error %></p>
+<% } %>
+
+<form action="/add-user" method="POST">
+  <label for="name">Webring name:</label>
+  <input type="text" id="name" name="name" maxlength="40" required>
+
+  <label for="url">Homepage:</label>
+  <input type="url" id="url" name="url" maxlength="60" required>
+
+  <label for="desc">Brief description:</label>
+  <input type="text" id="desc" name="desc" maxlength="300" required>
+
+  <label for="pass">Password:</label>
+  <input type="password" id="pass" name="pass" maxlength="40" required>
+
+  <label for="autoAccept">Automatically acceptance?</label>
+  <input type="checkbox" id="autoAccept" name="autoAccept">
+
+  <button type="submit">Add Ring</button>
+</form>

@@ -1,0 +1,19 @@
+{
+  "name": "ring",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node server.js"
+  },
+  "author": "moosyu",
+  "license": "ISC",
+  "description": "super cool operation",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-ejs-layouts": "^2.5.1",
+    "firebase-admin": "^12.7.0"
+  }
+}
